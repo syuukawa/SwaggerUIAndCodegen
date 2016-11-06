@@ -11,31 +11,33 @@ package com.didispace.domain;
  */
 public class User {
 
-    private Long id;
-    private String name;
-    private Integer age;
+    private String username;
 
-    public Long getId() {
-        return id;
+    private String password;
+
+    private String role;
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getRole() {
+        return role;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setRole(String role) {
+        this.role = role;
     }
 }
