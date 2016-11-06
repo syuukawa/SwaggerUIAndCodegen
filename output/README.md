@@ -71,12 +71,11 @@ public class UsercontrollerApiExample {
     public static void main(String[] args) {
         
         UsercontrollerApi apiInstance = new UsercontrollerApi();
-        User user = new User(); // User | 用户详细实体user
         try {
-            String result = apiInstance.postUserUsingPOST(user);
+            ResponseListUser result = apiInstance.getUserListUsingGET();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UsercontrollerApi#postUserUsingPOST");
+            System.err.println("Exception when calling UsercontrollerApi#getUserListUsingGET");
             e.printStackTrace();
         }
     }
@@ -90,11 +89,14 @@ All URIs are relative to *https://localhost:8081/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*UsercontrollerApi* | [**postUserUsingPOST**](docs/UsercontrollerApi.md#postUserUsingPOST) | **POST** /users | 创建用户
+*UsercontrollerApi* | [**getUserListUsingGET**](docs/UsercontrollerApi.md#getUserListUsingGET) | **GET** /users | 获取用户列表
+*UsercontrollerApi* | [**getUserUsingGET**](docs/UsercontrollerApi.md#getUserUsingGET) | **GET** /users/{id} | 获取用户详细信息
 
 
 ## Documentation for Models
 
+ - [ResponseListUser](docs/ResponseListUser.md)
+ - [ResponseUser](docs/ResponseUser.md)
  - [User](docs/User.md)
 
 

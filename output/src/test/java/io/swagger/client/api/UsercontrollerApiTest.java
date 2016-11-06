@@ -26,7 +26,8 @@
 package io.swagger.client.api;
 
 import io.swagger.client.ApiException;
-import io.swagger.client.model.User;
+import io.swagger.client.model.ResponseListUser;
+import io.swagger.client.model.ResponseUser;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -43,21 +44,33 @@ public class UsercontrollerApiTest {
 
     
     /**
-     * 创建用户
+     * 获取用户列表
      *
-     * 根据User对象创建用户
+     * 
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void postUserUsingPOSTTest() throws ApiException {
-         User user = new User();
-         user.setId(1L);
-         user.setAge(20);
-         user.setName("syuukawa");
-         String response = api.postUserUsingPOST(user);
-        System.out.println(response);
+    public void getUserListUsingGETTest() throws ApiException {
+         ResponseListUser response = api.getUserListUsingGET();
+         System.out.println("======================" + response);
+        // TODO: test validations
+    }
+    
+    /**
+     * 获取用户详细信息
+     *
+     * 根据url的id来获取用户详细信息
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUserUsingGETTest() throws ApiException {
+        String id = "1";
+         ResponseUser response = api.getUserUsingGET(id);
+        System.out.println("======================" + response);
         // TODO: test validations
     }
     

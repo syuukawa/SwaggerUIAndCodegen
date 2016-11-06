@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**age** | **Integer** |  |  [optional]
-**id** | **Long** |  |  [optional]
-**name** | **String** |  |  [optional]
+**password** | **String** |  |  [optional]
+**role** | **String** |  |  [optional]
+**username** | **String** |  |  [optional]
 
 
 

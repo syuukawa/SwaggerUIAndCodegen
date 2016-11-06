@@ -38,7 +38,8 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import io.swagger.client.model.User;
+import io.swagger.client.model.ResponseListUser;
+import io.swagger.client.model.ResponseUser;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -65,14 +66,9 @@ public class UsercontrollerApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for postUserUsingPOST */
-    private com.squareup.okhttp.Call postUserUsingPOSTCall(User user, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = user;
-        
-        // verify the required parameter 'user' is set
-        if (user == null) {
-            throw new ApiException("Missing the required parameter 'user' when calling postUserUsingPOST(Async)");
-        }
+    /* Build call for getUserListUsingGET */
+    private com.squareup.okhttp.Call getUserListUsingGETCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
         
 
         // create path and map variables
@@ -85,7 +81,7 @@ public class UsercontrollerApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "*_/_*"
+            "application/json"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -109,43 +105,40 @@ public class UsercontrollerApi {
         }
 
         String[] localVarAuthNames = new String[] {  };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     /**
-     * 创建用户
-     * 根据User对象创建用户
-     * @param user 用户详细实体user (required)
-     * @return String
+     * 获取用户列表
+     * 
+     * @return ResponseListUser
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String postUserUsingPOST(User user) throws ApiException {
-        ApiResponse<String> resp = postUserUsingPOSTWithHttpInfo(user);
+    public ResponseListUser getUserListUsingGET() throws ApiException {
+        ApiResponse<ResponseListUser> resp = getUserListUsingGETWithHttpInfo();
         return resp.getData();
     }
 
     /**
-     * 创建用户
-     * 根据User对象创建用户
-     * @param user 用户详细实体user (required)
-     * @return ApiResponse&lt;String&gt;
+     * 获取用户列表
+     * 
+     * @return ApiResponse&lt;ResponseListUser&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> postUserUsingPOSTWithHttpInfo(User user) throws ApiException {
-        com.squareup.okhttp.Call call = postUserUsingPOSTCall(user, null, null);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+    public ApiResponse<ResponseListUser> getUserListUsingGETWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = getUserListUsingGETCall(null, null);
+        Type localVarReturnType = new TypeToken<ResponseListUser>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * 创建用户 (asynchronously)
-     * 根据User对象创建用户
-     * @param user 用户详细实体user (required)
+     * 获取用户列表 (asynchronously)
+     * 
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call postUserUsingPOSTAsync(User user, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call getUserListUsingGETAsync(final ApiCallback<ResponseListUser> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -166,8 +159,115 @@ public class UsercontrollerApi {
             };
         }
 
-        com.squareup.okhttp.Call call = postUserUsingPOSTCall(user, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        com.squareup.okhttp.Call call = getUserListUsingGETCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ResponseListUser>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /* Build call for getUserUsingGET */
+    private com.squareup.okhttp.Call getUserUsingGETCall(String id, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getUserUsingGET(Async)");
+        }
+        
+
+        // create path and map variables
+        String localVarPath = "/users/{id}".replaceAll("\\{format\\}","json")
+        .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * 获取用户详细信息
+     * 根据url的id来获取用户详细信息
+     * @param id 用户ID (required)
+     * @return ResponseUser
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ResponseUser getUserUsingGET(String id) throws ApiException {
+        ApiResponse<ResponseUser> resp = getUserUsingGETWithHttpInfo(id);
+        return resp.getData();
+    }
+
+    /**
+     * 获取用户详细信息
+     * 根据url的id来获取用户详细信息
+     * @param id 用户ID (required)
+     * @return ApiResponse&lt;ResponseUser&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ResponseUser> getUserUsingGETWithHttpInfo(String id) throws ApiException {
+        com.squareup.okhttp.Call call = getUserUsingGETCall(id, null, null);
+        Type localVarReturnType = new TypeToken<ResponseUser>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * 获取用户详细信息 (asynchronously)
+     * 根据url的id来获取用户详细信息
+     * @param id 用户ID (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getUserUsingGETAsync(String id, final ApiCallback<ResponseUser> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getUserUsingGETCall(id, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ResponseUser>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

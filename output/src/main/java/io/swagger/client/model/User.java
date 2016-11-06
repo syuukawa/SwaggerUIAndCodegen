@@ -33,69 +33,69 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * User
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-05T18:16:50.888+08:00")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2016-11-06T20:36:59.221+08:00")
 public class User {
-  @SerializedName("age")
-  private Integer age = null;
+  @SerializedName("password")
+  private String password = null;
 
-  @SerializedName("id")
-  private Long id = null;
+  @SerializedName("role")
+  private String role = null;
 
-  @SerializedName("name")
-  private String name = null;
+  @SerializedName("username")
+  private String username = null;
 
-  public User age(Integer age) {
-    this.age = age;
+  public User password(String password) {
+    this.password = password;
     return this;
   }
 
    /**
-   * Get age
-   * @return age
+   * Get password
+   * @return password
   **/
   @ApiModelProperty(example = "null", value = "")
-  public Integer getAge() {
-    return age;
+  public String getPassword() {
+    return password;
   }
 
-  public void setAge(Integer age) {
-    this.age = age;
+  public void setPassword(String password) {
+    this.password = password;
   }
 
-  public User id(Long id) {
-    this.id = id;
+  public User role(String role) {
+    this.role = role;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get role
+   * @return role
   **/
   @ApiModelProperty(example = "null", value = "")
-  public Long getId() {
-    return id;
+  public String getRole() {
+    return role;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public void setRole(String role) {
+    this.role = role;
   }
 
-  public User name(String name) {
-    this.name = name;
+  public User username(String username) {
+    this.username = username;
     return this;
   }
 
    /**
-   * Get name
-   * @return name
+   * Get username
+   * @return username
   **/
   @ApiModelProperty(example = "null", value = "")
-  public String getName() {
-    return name;
+  public String getUsername() {
+    return username;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
 
@@ -108,14 +108,14 @@ public class User {
       return false;
     }
     User user = (User) o;
-    return Objects.equals(this.age, user.age) &&
-        Objects.equals(this.id, user.id) &&
-        Objects.equals(this.name, user.name);
+    return Objects.equals(this.password, user.password) &&
+        Objects.equals(this.role, user.role) &&
+        Objects.equals(this.username, user.username);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(age, id, name);
+    return Objects.hash(password, role, username);
   }
 
 
@@ -124,9 +124,9 @@ public class User {
     StringBuilder sb = new StringBuilder();
     sb.append("class User {\n");
     
-    sb.append("    age: ").append(toIndentedString(age)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    role: ").append(toIndentedString(role)).append("\n");
+    sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("}");
     return sb.toString();
   }
